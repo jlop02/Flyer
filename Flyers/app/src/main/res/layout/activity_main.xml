@@ -18,4 +18,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:onClick="OnMyClick" />
 
+    <ImageView
+        android:id="@+id/flyer_test"
+        android:layout_width="192dp"
+        android:layout_height="204dp"
+        android:layout_marginBottom="264dp"
+        android:layout_marginEnd="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:color/darker_gray" />
+
 </android.support.constraint.ConstraintLayout>
