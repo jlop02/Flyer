@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Flyers</string>
+    <string name="Title">Title</string>
+    <string name="Date">Date</string>
+    <string name="Location">Location</string>
+    <string name="description">Description</string>
 </resources>
