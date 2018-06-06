@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "705741463282",
+    "firebase_url": "https://flyers-f278b.firebaseio.com",
+    "project_id": "flyers-f278b",
+    "storage_bucket": "flyers-f278b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705741463282:android:0dcdd043ace26e16",
+        "android_client_info": {
+          "package_name": "com.example.lo.flyers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705741463282-9hoqnso5mbttiv7eoi1f1cp8dd6ckavj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lo.flyers",
+            "certificate_hash": "dfaeae8b576a4eb1776197c5c0beb0f8771d3ad7"
+          }
+        },
+        {
+          "client_id": "705741463282-n8jcletqqtrhateallfoprvgt1cjjfr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx1LMICvUinAPKr0HtF_HUkBiykWf1S5A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705741463282-n8jcletqqtrhateallfoprvgt1cjjfr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

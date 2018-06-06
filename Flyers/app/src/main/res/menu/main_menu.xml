@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/itemLog"
+        android:title="LogIn"
+        app:showAsAction="ifRoom"
+        />
 
     <item android:id="@+id/item1"
         android:title="Home"
@@ -8,7 +13,7 @@
         />
 
     <item android:id="@+id/item2"
-        android:title="LogIn"
+        android:title="LogOut"
         app:showAsAction="never"
         />
 
