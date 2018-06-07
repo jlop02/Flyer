@@ -50,6 +50,7 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        setTitle("Add New Flyer");
 
         btnCamera = findViewById(R.id.button);
         uploadBtn = findViewById(R.id.button3);

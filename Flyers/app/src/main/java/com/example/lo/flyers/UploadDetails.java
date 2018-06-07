@@ -17,6 +17,7 @@ public class UploadDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_details);
+        setTitle("Details");
 
         imgView = findViewById(R.id.imageView2);
         textView = findViewById(R.id.timeView);
