@@ -69,7 +69,7 @@
             android:id="@+id/imageView"
             android:layout_width="230dp"
             android:layout_height="233dp"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="76dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -79,11 +79,17 @@
             android:id="@+id/button"
             android:layout_width="84dp"
             android:layout_height="84dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="96dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/camera" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:srcCompat="@drawable/ic_upload_image" />
 
         <Button
             android:id="@+id/button3"

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ListViewExample</string>
+    <string name="action_favorite">ADD Event</string>
+</resources>

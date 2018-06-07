@@ -14,9 +14,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
+import android.support.design.widget.FloatingActionButton;
 
 import com.firebase.client.Firebase;
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +32,7 @@ import static com.google.firebase.auth.FirebaseAuth.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnMove;
+    FloatingActionButton btnMove;
 
 
     private FirebaseAuth mAuth;

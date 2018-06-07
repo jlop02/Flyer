@@ -70,9 +70,18 @@ public class Main2Activity extends AppCompatActivity {
         storageReference = storage.getReference();
 
         dataBaseReference = FirebaseDatabase.getInstance().getReference();
-
+        btnCamera.setVisibility(android.view.View.VISIBLE);
+        View.setVisibility(android.view.View.INVISIBLE);
 
         btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
+                View.setVisibility(android.view.View.VISIBLE);
+                btnCamera.setVisibility(android.view.View.INVISIBLE);
+            }
+        });
+        View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
