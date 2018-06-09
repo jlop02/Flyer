@@ -2,12 +2,14 @@ package com.example.lo.flyers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -33,13 +35,25 @@ public class FlyerAdapter extends RecyclerView.Adapter<FlyerAdapter.FlyerViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FlyerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final FlyerViewHolder holder, int position) {
         Upload currentUpload = uploads.get(position);
         holder.textViewName.setText(currentUpload.getTitle());
+        holder.textViewName2.setText(currentUpload.getTime());
         //holder.textViewName.setText(currentUpload.getLocation());
         //Picasso is a library that makes image stuff a LOT easier
         //see on http://square.github.io/picasso/
-        Picasso.get().load(currentUpload.getImageUrl()).fit().centerInside().into(holder.imageView);
+        holder.progressBar.setVisibility(View.VISIBLE);
+        Picasso.get().load(currentUpload.getImageUrl()).fit().centerInside().into(holder.imageView, new com.squareup.picasso.Callback(){
+            @Override
+            public void onSuccess(){
+                holder.progressBar.setVisibility(View.INVISIBLE);
+                holder.imageView.setBackgroundColor(Color.parseColor("#000000"));
+            }
+            @Override
+            public void onError(Exception e){
+
+            }
+        } );
     }
 
     @Override
@@ -52,6 +66,8 @@ public class FlyerAdapter extends RecyclerView.Adapter<FlyerAdapter.FlyerViewHol
         //ADD MORE IF YOU WANT
         public TextView textViewName;
         public ImageView imageView;
+        public TextView textViewName2;
+        public ProgressBar progressBar;
         //List<Upload> uploads = new List<Upload>();
         List<Upload> uploads = new ArrayList<Upload>();
         Context context;
@@ -63,7 +79,9 @@ public class FlyerAdapter extends RecyclerView.Adapter<FlyerAdapter.FlyerViewHol
             flyerView.setOnClickListener(this);
             textViewName = flyerView.findViewById(R.id.title);
             imageView = flyerView.findViewById(R.id.image);
-
+            textViewName2=flyerView.findViewById(R.id.timeText);
+            progressBar=flyerView.findViewById(R.id.progressBar3);
+            progressBar.setVisibility(View.VISIBLE);
 
 
         }
