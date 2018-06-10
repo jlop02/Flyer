@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Flyers");
 
         btnMove = findViewById(R.id.button2);
         if(user != null){
@@ -135,9 +136,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
 
-
             case R.id.item1:
-                Toast.makeText(this, "Home was selected", Toast.LENGTH_SHORT).show();
+                if(item.getItemId()==R.id.item1){
+                LinearLayoutManager layoutManager=(LinearLayoutManager) recyclerView.getLayoutManager();
+                layoutManager.scrollToPositionWithOffset(0,0);}
                 return true;
 
             case R.id.item2:
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             case R.id.item3:
-                Toast.makeText(this, "Saved was selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Recent was selected", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.item4:

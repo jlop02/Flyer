@@ -4,8 +4,7 @@
     <item
         android:id="@+id/itemLog"
         android:title="LogIn"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="ifRoom" />
 
     <item android:id="@+id/item1"
         android:title="Home"
@@ -18,7 +17,7 @@
         />
 
     <item android:id="@+id/item3"
-        android:title="Saved"
+        android:title="Recent"
         app:showAsAction="never"
         />
 
