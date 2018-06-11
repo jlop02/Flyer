@@ -23,9 +23,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static com.google.firebase.auth.FirebaseAuth.*;
@@ -73,26 +75,33 @@ public class MainActivity extends AppCompatActivity {
 
         //can't initialize new list, but declare as list bc more flexible
         uploads = new ArrayList<>();
+        adapter = new FlyerAdapter(this,uploads);
+        recyclerView.setAdapter(adapter);
 
         databasereference = FirebaseDatabase.getInstance().getReference();
 
         //event listener for changes in data base
-        databasereference.addValueEventListener(new ValueEventListener() {
+        databasereference.addValueEventListener(valueEventListener);
 
             //will be called on create method and if there are changes to database ref
+
+    }
+        ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //clear out uploads because data will be added all over again
                 //don't know if there's a more efficient way of doing it - add only the
                 //data not already in uploads?
                 uploads.clear();
-                //add all data in database to uploads
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Upload upload = postSnapshot.getValue(Upload.class);
-                    if(upload.getImageUrl()!=null)
-                        {uploads.add(upload);}
+                if(dataSnapshot.exists()) {
+                    //add all data in database to uploads
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        Upload upload = postSnapshot.getValue(Upload.class);
+                        if(upload.getImageUrl()!=null)
+                            {uploads.add(upload);}
+                    }
                 }
-
+                adapter.notifyDataSetChanged();
                 //set adapter
                 adapter = new FlyerAdapter(MainActivity.this, uploads);
                 recyclerView.setAdapter(adapter);
@@ -104,9 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 //this method will be called if there is an error in the database
                 //(no permiission to view items, etc.
             }
-        });
-    }
-    
+        };
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -149,29 +157,25 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(this,MainActivity.class);
                 startActivity(intent1);
 
-
-            case R.id.item3:
-                Toast.makeText(this, "Recent was selected", Toast.LENGTH_SHORT).show();
-                return true;
-
             case R.id.item4:
                 Toast.makeText(this, "Map was selected", Toast.LENGTH_SHORT).show();
-                return true;
+                Intent intent2 = new Intent(this,MapsActivity.class);
+                startActivity(intent2);
 
             case R.id.item5:
-                Toast.makeText(this, "Sort was selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sort", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.SubItem1:
-                Toast.makeText(this, "New was selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Nearest Date", Toast.LENGTH_SHORT).show();
+                Query query = FirebaseDatabase.getInstance().getReference("").orderByChild("timeS");
+                query.addListenerForSingleValueEvent(valueEventListener);
                 return true;
 
             case R.id.SubItem2:
-                Toast.makeText(this, "Saved was selected", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.SubItem3:
-                Toast.makeText(this, "Liked was selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Furthest Date", Toast.LENGTH_SHORT).show();
+                Query query2 = FirebaseDatabase.getInstance().getReference("").orderByChild("timeB");
+                query2.addListenerForSingleValueEvent(valueEventListener);
                 return true;
 
             default:

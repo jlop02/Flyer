@@ -96,6 +96,8 @@ public class FlyerAdapter extends RecyclerView.Adapter<FlyerAdapter.FlyerViewHol
             intent.putExtra("time", upload.getTime());
             intent.putExtra("location", upload.getLocation());
             intent.putExtra("details", upload.getDetails());
+            intent.putExtra("lat",upload.getLat());
+            intent.putExtra("lng",upload.getLng());
             this.context.startActivity(intent);
         }
     }
