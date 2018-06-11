@@ -14,6 +14,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import java.lang.Math;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,8 +34,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class Main2Activity extends AppCompatActivity {
@@ -37,7 +49,7 @@ public class Main2Activity extends AppCompatActivity {
     ImageView View;
     Firebase myFirebase;
     EditText field1, field2, field3, field4;
-    String strTitle, strTime, strLocation, strDetails;
+    String strTitle, strTime, strLocation, strDetails, lat, lng, timeS, timeB;
 
     Uri imageUri;
     final int PICK_IMAGE_REQUEST = 71;
@@ -70,18 +82,9 @@ public class Main2Activity extends AppCompatActivity {
         storageReference = storage.getReference();
 
         dataBaseReference = FirebaseDatabase.getInstance().getReference();
-        btnCamera.setVisibility(android.view.View.VISIBLE);
-        View.setVisibility(android.view.View.INVISIBLE);
+
 
         btnCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chooseImage();
-                View.setVisibility(android.view.View.VISIBLE);
-                btnCamera.setVisibility(android.view.View.INVISIBLE);
-            }
-        });
-        View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
@@ -92,6 +95,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadFlyer();
+                new GetCoordinates().execute(field2.getText().toString().replace(" ","+"));
             }
         });
     }
@@ -99,15 +103,33 @@ public class Main2Activity extends AppCompatActivity {
     void chooseImage(){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
+
+       // Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        //startActivityForResult(cameraIntent, CAMERA_REQUEST);
     }
 
-    private void uploadFlyer() {
+    private void uploadFlyer(){
         strTime = field1.getText().toString().trim();
         strLocation = field2.getText().toString().trim();
         strDetails = field3.getText().toString().trim();
         strTitle = field4.getText().toString().trim();
 
-        // TEST AGAIN
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
+        format.setTimeZone(TimeZone.getTimeZone("PST"));
+
+        SimpleDateFormat newFormat = new SimpleDateFormat("yyyyMMdd");
+        Date date = null;
+        try{
+            date = format.parse(strTime);
+            timeS = newFormat.format(date);
+
+            //double big = 100000000 - Double.parseDouble(timeS);
+            int num = Integer.parseInt(timeS);
+            int big = 100000000 - num;
+            timeB = Integer.toString(big);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
         if(strTitle.isEmpty()){
             field4.setError("Title is required");
@@ -116,7 +138,7 @@ public class Main2Activity extends AppCompatActivity {
         }
 
         if(strTime.isEmpty()){
-            field1.setError("Time is required");
+            field1.setError("Time is required MM-dd-yyyy");
             field1.requestFocus();
             return;
         }
@@ -147,8 +169,8 @@ public class Main2Activity extends AppCompatActivity {
                     //strDetails = field3.getText().toString().trim();
 
                     //make new upload item - download URL is the url for downloading the img from storage
-                    Upload upload = new Upload(strTitle, strDetails, strTime, strLocation,
-                            taskSnapshot.getDownloadUrl().toString());
+                    Upload upload = new Upload(strTitle, strDetails, strTime, strLocation,taskSnapshot.getDownloadUrl().toString(),
+                            lat, lng, timeS, timeB);
                     //create new entry in database w/ unique id
                     String uploadId = dataBaseReference.push().getKey();
                     //now upload ALL information about flyer to the unique id in the database
@@ -156,8 +178,8 @@ public class Main2Activity extends AppCompatActivity {
                 }
             });
 
-            Intent intent = new Intent(Main2Activity.this, MainActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(Main2Activity.this, MainActivity.class);
+           // startActivity(intent);
         }
         //the flyer thing wasn't completely filled out, don't upload and display error message
         else {
@@ -165,9 +187,11 @@ public class Main2Activity extends AppCompatActivity {
             Toast.makeText(this, "No flyer image was selected!", Toast.LENGTH_SHORT).show();
 
         }
+        Intent intent = new Intent(Main2Activity.this, MainActivity.class);
+        startActivity(intent);
 
 //        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Userss").child(user_id).push();
+//        DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).push();
     }
 
     @Override
@@ -187,6 +211,55 @@ public class Main2Activity extends AppCompatActivity {
         ContentResolver cr = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
+
+    private class GetCoordinates extends AsyncTask<String,Void,String> {
+        ProgressDialog dialog = new ProgressDialog(Main2Activity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.setMessage("Please wait....");
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String response;
+            try{
+                String address = strings[0];
+                LatLongData http = new LatLongData();
+                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s",address);
+                response = http.getData(url);
+                return response;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try{
+                JSONObject jsonObject = new JSONObject(s);
+
+                lat = ((JSONArray)jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry")
+                        .getJSONObject("location").get("lat").toString();
+                lng = ((JSONArray)jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry")
+                        .getJSONObject("location").get("lng").toString();
+
+                //txtCoord.setText(String.format("Coordinates : %s / %s ",lat,lng));
+
+                if(dialog.isShowing())
+                    dialog.dismiss();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 //    void uploadImage() {

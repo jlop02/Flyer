@@ -6,12 +6,28 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
-public class UploadDetails extends AppCompatActivity {
+import android.support.v7.widget.Toolbar;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+
+
+public class UploadDetails extends AppCompatActivity implements OnMapReadyCallback{
     ImageView imgView;
     TextView textView, localView, detailView;
+    private MapView mapView;
+    private GoogleMap gmap;
+    String Lat, Lng;
+
+    private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +45,92 @@ public class UploadDetails extends AppCompatActivity {
         String gettingImageUrl = getImage.getStringExtra("imageUrl");
         Picasso.get().load(gettingImageUrl).fit().centerInside().into(imgView);
 
-         textView.setText("Time: "+ getIntent().getStringExtra("time"));
-         localView.setText("Location: "+ getIntent().getStringExtra("location"));
-         detailView.setText("Details: "+ getIntent().getStringExtra("details"));
+         textView.setText(""+ getIntent().getStringExtra("time"));
+         localView.setText(""+ getIntent().getStringExtra("location"));
+         detailView.setText(""+ getIntent().getStringExtra("details"));
+
+
+        try {
+            Bundle mapViewBundle = null;
+            if (savedInstanceState != null) {
+                mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
+            }
+
+            mapView = findViewById(R.id.map_view);
+            mapView.onCreate(mapViewBundle);
+            mapView.getMapAsync(this);
+        }catch (NullPointerException e){}
+    }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        Bundle mapViewBundle = outState.getBundle(MAP_VIEW_BUNDLE_KEY);
+        if (mapViewBundle == null) {
+            mapViewBundle = new Bundle();
+            outState.putBundle(MAP_VIEW_BUNDLE_KEY, mapViewBundle);
+        }
+
+        mapView.onSaveInstanceState(mapViewBundle);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+    @Override
+    protected void onPause() {
+        mapView.onPause();
+        super.onPause();
+    }
+    @Override
+    protected void onDestroy() {
+        mapView.onDestroy();
+        super.onDestroy();
+    }
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        try {
+            Lat = getIntent().getStringExtra("lat");
+            double Latitude = Double.parseDouble(Lat);
+            Lng = getIntent().getStringExtra("lng");
+            double Longitude = Double.parseDouble(Lng);
+
+            gmap = googleMap;
+            gmap.setMinZoomPreference(14);
+            //gmap.setMaxZoomPreference(16);
+            gmap.setIndoorEnabled(true);
+            UiSettings uiSettings = gmap.getUiSettings();
+            uiSettings.setIndoorLevelPickerEnabled(true);
+            uiSettings.setMyLocationButtonEnabled(true);
+            uiSettings.setMapToolbarEnabled(true);
+            uiSettings.setCompassEnabled(true);
+            uiSettings.setZoomControlsEnabled(true);
+
+            LatLng map = new LatLng(Latitude, Longitude);
+
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(map);
+            gmap.addMarker(markerOptions);
+
+            gmap.moveCamera(CameraUpdateFactory.newLatLng(map));
+        }catch (NullPointerException e){}
     }
 }

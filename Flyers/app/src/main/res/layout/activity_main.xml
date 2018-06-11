@@ -13,19 +13,33 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:scrollbars="vertical" />
-
+<!--
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button2"
         android:layout_width="81dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="70dp"
         android:layout_marginEnd="48dp"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/ic_action_name"
-        app:backgroundTint="@android:color/holo_orange_light"
-         />
+        android:onClick="OnMyClick"
+        app:srcCompat="@mipmap/add_flyer_icon"
+        tools:onClick="OnMyClick"/>
+-->
+       <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="213dp"
+            android:layout_marginEnd="56dp"
+            android:onClick="OnMyClick"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:onClick="OnMyClick" />
 
 </RelativeLayout>
