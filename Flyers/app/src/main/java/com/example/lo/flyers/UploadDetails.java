@@ -46,7 +46,7 @@ public class UploadDetails extends AppCompatActivity {
 
         });
 
-         textView.setText("Time: "+ getIntent().getStringExtra("time"));
+         textView.setText("Date: "+ getIntent().getStringExtra("time"));
          localView.setText("Location: "+ getIntent().getStringExtra("location"));
          detailView.setText("Details: "+ getIntent().getStringExtra("details"));
     }
