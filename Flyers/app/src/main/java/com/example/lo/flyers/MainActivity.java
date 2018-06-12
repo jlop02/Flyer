@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+                return true;
 
             case R.id.item1:
                 if(item.getItemId()==R.id.item1){
@@ -151,16 +152,20 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.item2:
-                Toast.makeText(this, "LogOut was selected", Toast.LENGTH_SHORT).show();
+                if(item.getItemId()==R.id.item2)
+                {Toast.makeText(this, "LogOut was selected", Toast.LENGTH_SHORT).show();
                 getInstance().signOut();
 
                 Intent intent1 = new Intent(this,MainActivity.class);
-                startActivity(intent1);
+                startActivity(intent1);}
+                return true;
 
             case R.id.item4:
+                if(item.getItemId()==R.id.item4){
                 Toast.makeText(this, "Map was selected", Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent(this,MapsActivity.class);
-                startActivity(intent2);
+                startActivity(intent2);}
+                return true;
 
             case R.id.item5:
                 Toast.makeText(this, "Sort", Toast.LENGTH_SHORT).show();
