@@ -1,0 +1,146 @@
+<DOCTYPE html>
+<html lang="en">
+	<head>
+	<title> Ezwork2 </title>
+	<meta charset="utf-8" />
+	<link href="EmployerProfile.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="logo2.png">
+	<!-- <h1 div id="title">EzWork</h1> -->
+	</head>
+	<body>
+        <div id="Container">
+        <div id="Header">
+        <img id="banner" src="banner.png"> 			
+	</div>
+        </div>
+			
+      
+        <div id="SideBar">
+			<div id="ScrollBar">
+                <!-- Logged in buttons -->
+                <li><a href="#">My Profile</a></li>
+			<!-- Finders only -->
+                <li><a href="#">Advanced Search</a></li>
+			<!-- Employers only -->
+                <li><a href="#">Post Job</a></li>
+		<!-- Universal buttons -->
+				<li><a href="#">About EzWork</a></li>
+				<li><a href="#">Tutorial</a></li>
+                <li><a href="#">Logout</a></li>
+				<li><a href="#">Contact Us</a></li>
+           <!--<form>
+			<h2 div id="log">Login</h2>
+			<input type="text" placeholder="&#128272; User Name" name >
+			<input type="password" placeholder="&#128274; Password" name >
+			<input type="submit" value="signin" ><input type="submit" value="signup">
+		  </form> -->
+		  </div>
+        </div>
+        <div id="MainBody">
+			<div id="Employer">
+			<!--	<div id="ProfilePic">
+					<a target="_blank" href="img_avatar2.png">
+						<img src="img_avatar2.png" style='height: 100%;  width: 100%; object-fit: contain'>
+					</a> -->
+					
+				<div id="Employers">
+				<h3>Employer</h3>
+				<textarea rows="4" cols="70" id="edit" contenteditable="true">Text are we are using to test</textarea>
+				<input type="button" value="Edit" onclick="Edits()"/>
+			    <div id="update"></div>
+				</div>		
+				<div id="City">
+					<h3>City</h3>
+					text for city goes here 
+				</div>
+				<div id="About">
+					<h3>About</h3>
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					Description of company/person goes here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+					bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					bla bla bla bla bla bla bla bla
+					
+					
+					
+				</div>
+				<div id="ExtraPics">
+					<a target="_blank" href="img_avatar2.png">
+						<img src="img_avatar2.png" style='height: 100%; width: 100%; object-fit: contain'>
+					</a>
+				</div>
+				<div id="ExtraPics">
+					<a target="_blank" href="img_avatar3.png">
+						<img src="img_avatar3.png" style='height: 100%; width: 100%; object-fit: contain'>
+					</a>
+				</div>
+				<div id="ExtraPics">
+					<a target="_blank" href="img_avatar4.png">
+						<img src="img_avatar4.png" style='height: 100%; width: 100%; object-fit: contain'>
+					</a>
+				</div>
+				<div id="ExtraPics">
+					<a target="_blank" href="img_avatar2.png">
+						<img src="img_avatar2.png" style='height: 100%; width: 100%; object-fit: contain'>
+					</a>
+				</div>
+			</div>
+
+                
+		</div>
+        <div id="Footer"></div>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyCpAKm-xa-Tz3Cix-3io2C--dby4unJbow",
+          authDomain: "ezwork-89a16.firebaseapp.com",
+          databaseURL: "https://ezwork-89a16.firebaseio.com",
+          projectId: "ezwork-89a16",
+          storageBucket: "ezwork-89a16.appspot.com",
+          messagingSenderId: "526263272938"
+        };
+        firebase.initializeApp(config);
+        </script>
+        <script src="EzWork.js"></script>
+
+	</body>
+</html>

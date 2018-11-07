@@ -1,0 +1,100 @@
+<html>
+<head>
+  <title>Welcome to EzWork</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="create_accountstyle.css" />
+</head>
+<body>
+  
+  <div id="main-div" class="main-div">
+    <h3>Welcome to EzWork!</h3>
+	<div id="email_div" class="box-div">
+		<div id="email_box" class="input-div">
+			<input type="email" placeholder="Email..." id="create_email_field" />
+		</div>
+		
+		<div id="email_explain" class="explain-text">
+		<p> Your email will be used to login to EzWork, and will be kept private until a job match is found.
+		</p>
+		</div>
+		
+		<div id="bad_email" class="error-text">
+		<p id="email_error"> Sample Error Text </p>
+		</div>
+	</div>
+	<div id="userid_div" class="box-div">
+		<div id="userid_box" class="input-div">
+			<input type="userid" placeholder="User ID..." id="create_userid_field" />
+		</div>
+		
+		<div id="userid_explain" class="explain-text">
+		<p> Your UserID will be part of your public profile, visible to unmatched EzWork users.
+		</p>
+		</div>
+		
+		<div id="bad_userid" class="error-text">
+		<p id="userid_error"> An account already exists with that UserID. </p>
+		</div>
+	</div>
+	<div id="password_div" class="box-div">
+		<div id="password_box" class="input-div">
+			<input type="password" placeholder="Password..." id="create_password_field" />
+		</div>
+		
+		<div id="password_explain" class="explain-text">
+		<p> Your password must be at least 6 characters long.
+		</p>
+		</div>
+		
+		<div id="bad_password" class="error-text">
+		<p id="password_error"> Password too short. </p>
+		</div>
+	</div>
+	
+	<div id="password2_div" class="box-div">
+		<div id="password2_box" class="input-div">
+			<input type="password" placeholder="Retype Password..." id="create_password2_field" />
+		</div>
+		
+		<div id="bad_password2" class="error-text">
+		<p id="password2_error"> The passwords need to match. </p>
+		</div>
+	</div>
+	
+	<div id="checkbox_div" class="box-div">
+		<label class="check_label">
+			<input type="checkbox" class="radio" id="finder_checkbox" onchange="uncheck_employer()" />
+				I am a <b>Finder</b>, seeking easy work</label>
+		<label class="check_label">
+			<input type="checkbox" class="radio" id="employer_checkbox" onchange="uncheck_finder()"/>
+				I am an <b>Employer</b>, seeking workers</label>
+		<div id="bad_checkbox" class="error-text">
+		<p id="checkbox_error"> You must select one of the above. </p>
+		</div>
+	</div>
+	
+	<div  id="buttons" class="buttons-div">
+		<button id="button_create" onclick="create_cancel()">Back to Homepage</button>
+		<button id="button_back" onclick="create()">Create Account</button>
+	</div>
+  </div>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCpAKm-xa-Tz3Cix-3io2C--dby4unJbow",
+    authDomain: "ezwork-89a16.firebaseapp.com",
+    databaseURL: "https://ezwork-89a16.firebaseio.com",
+    projectId: "ezwork-89a16",
+    storageBucket: "ezwork-89a16.appspot.com",
+    messagingSenderId: "526263272938"
+  };
+  firebase.initializeApp(config);
+  </script>
+  <script src="create_account.js"></script>
+
+</body>
+</html>

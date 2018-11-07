@@ -1,0 +1,296 @@
+body{
+    margin: 0px;
+    font-family: 'Nunito', sans-serif;
+}
+
+button, a{
+    font-weight: 700;
+}
+
+#Container{
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#Header{
+    height: 150px;
+    background-color: #006A00;
+    margin-top: 0px;
+}
+
+#head{
+	/*text-align: center;*/
+	color: white;
+	font-size:400%;
+        margin-top: 0px;
+}
+/*
+#Menu{
+    height: 60px;
+    background-color: #666;
+}
+*/
+#SideBar{
+    width: 25%;
+    height: 100%;
+    padding-top: 10px;
+	padding-bottom: 68px;
+    background-color: #006A00;
+    list-style-type: none;
+    float: left;
+}
+
+#SideBar li a {
+    border: 2px solid #fff; /* Add a border to all links */
+    width: 80%;
+    margin-top: -2px; /* Prevent double borders */
+    margin-left: 6%;
+    background-color: #006A00; /* Grey background color */
+    border-radius: 5px;
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: #fff; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+}
+ 
+#SideBar li a:hover:not(.header) {
+    background-color: #fff; /* Add a hover effect to all links, except for headers */
+    color: #006A00;
+}
+
+#MainBody{
+    width: 75%;
+    height: 100%;
+    background-color: white;
+    float: right;
+}
+
+#banner{
+	margin-left: 10px;
+    width: 450px;
+    height: 170px;
+    display: inline-block;
+}
+
+#head{
+    vertical-align: top;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 72px;
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+#welcome_user{
+    display: none;
+    text-align: center;
+}
+
+#welcome_guest{
+
+}
+
+#logout_button{
+        margin-right: auto;
+        margin-left: auto;
+}
+
+.welcome{
+        float: right;
+        width: 20%;
+        margin-right: 20px;
+        font-size: 18px;
+        color: white;
+}
+
+.welcome h4{
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 0px;
+}
+
+.error-text {
+	background: #ff6666;
+	border-radius: 5px;
+        width: 91%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 10px;
+	text-align: left;
+	padding-left: 5px;
+	display: none;
+}
+
+.error-text p{
+        color: black;
+        margin: 0px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 200px;
+}
+/*
+#but{
+	float: right;
+	
+}
+*/
+
+/* Popup Content */
+#login_pop_inner{
+    background-color: #006A00; /* change this later */
+    color: #fff;
+    border-radius: 15px;
+    padding-top: 5px;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 2px solid #000;
+    width: 15%; /* Could be more or less, depending on screen size */
+    height: auto;
+}
+
+.popup-content{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.container input{
+    display: block;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    font-size: 14px;
+    outline: none;
+    width: 94%;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+
+.container button,.welcome button{
+  background: #006A00;
+  margin-top: 10px;
+  font-size: 14pt;
+  margin-left: 3%;
+  margin-right: -.6%;
+  margin-bottom: 10px;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 15px;
+  display: inline-block;
+  width: 45%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+
+.container button:hover, .welcome button:hover{
+  background: #fff;
+  color: #006A00;
+  cursor: pointer;
+}
+
+/* The Close Button */
+.close{
+    /* Position it in the top right corner outside of the modal */
+    /* NOTE DYLAN DOES NOT LIKE THE X THERE */
+    position: absolute;
+    right: 25px;
+    top: 0; 
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover{
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+} 
+
+#searchbar{
+    background-color: #006A00;
+    padding: 12px;
+}
+
+#mySearch {
+    background-image: url('searchIcon.png'); /* Add a search icon to input */
+    background-position: 6px 10px; /* Position of the icon */
+    background-repeat: no-repeat; /* Does not repeat image */
+    border-radius: 10px;
+    border: 1px solid #ddd; /* grey border */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; 
+    width: 100%; /* Search bar width size */
+}
+
+#mySearch:focus {
+	outline: none; /* get rid of annoying blue outline */
+	/* pick a new color this is placeholder */
+	border: 1px solid #5070ff; /* blue border on focus */
+}
+
+#jobsDiv{
+	overflow: auto;
+	height: 100%;
+}
+
+#jobList {
+    /* Remove default list styling */
+    list-style-type: none;
+    margin: 0; 
+    padding: 0;
+}
+
+#jobList li p {
+    border: 1px solid #ddd; /* Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    margin-bottom: 0px;
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 12px; 
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: black; /* Add text color */
+    display: block; /* Make it into a block element to fill the whole list */
+}
+
+#jobList li p:hover:not(.header) {
+    background-color: #eee; /* Hovering effects to lists, except for headers */
+}

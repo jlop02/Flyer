@@ -1,0 +1,154 @@
+body{
+    margin: 0px;
+    font-family: 'Nunito', sans-serif;
+	display: block;
+    width: 100%;
+	background-color: #006A00;
+	height: 100%;
+}
+
+button, a{
+    font-weight: 700;
+}
+
+#Container{
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#Header{
+    height: 150px;
+    background-color: #006A00;
+    margin-top: 0px;
+}
+
+#Employers{
+	width:98%;
+    margin-top: 0px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+}
+
+#City{
+	width:98%;
+    margin-top: 0px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+}
+#About{
+	width:98%;
+	padding-left: 5px;
+	padding-right: 10px;
+    margin-top: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#ExtraPics{
+    margin: 5px;
+    float: left;
+    width: 23%;
+	height: 23%;
+}
+
+#ProfilePic{
+    margin: 10px;
+    float: right;
+    width: 25%;
+	height: 25%;
+}
+
+#Employer{
+	padding-left: 5px;
+   `width: 74%;
+    height: auto;
+	min-height: 100%;
+	background-color: #006A60;
+    float: right;
+	border: 4px solid #fff;
+	border-radius: 5px;
+}
+
+
+#SideBar{
+	display: block;
+    width: 25%;
+	height: auto;
+    padding-top: 10px;
+	position: relative;
+	padding-bottom: 68px;
+    background-color: #006A00;
+    list-style-type: none;
+    float: left;
+	
+}
+#ScrollBar{
+	
+    width: 25%;
+	height: auto;
+	position: fixed;
+	
+}
+
+#SideBar li a {
+    border: 2px solid #fff; /* Add a border to all links */
+    width: 80%;
+    margin-top: -2px; /* Prevent double borders */
+    margin-left: 6%;
+    background-color: #006A00; /* Grey background color */
+    border-radius: 5px;
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: #fff; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+
+}
+ 
+#SideBar li a:hover:not(.header) {
+    background-color: #fff; /* Add a hover effect to all links, except for headers */
+    color: #006A00;
+}
+
+
+#MainBody{
+    width: 75%;
+	background-color: #006A00;
+	margin-left: auto;
+	margin-right: auto;
+    float: right;
+	height: 100%;
+}
+
+#banner{
+	margin-left: 10px;
+    width: 450px;
+    height: 170px;
+    display: inline-block;
+}
+
+.container button,.welcome button{
+  background: #006A00;
+  margin-top: 10px;
+  font-size: 14pt;
+  margin-left: 3%;
+  margin-right: -.6%;
+  margin-bottom: 10px;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 15px;
+  display: inline-block;
+  width: 45%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+
+
+
